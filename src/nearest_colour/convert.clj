@@ -21,5 +21,33 @@
    (+ (* r 0.0193) (* g 0.1192) (* b 0.9505))])
 
 (defn rgb_to_XYZ
+  "Take a vec of RGB and return its XYZ mapping."
   [coll]
   (compute_xyz_components (map map_rgb_channel coll)))
+
+; XYZ to LAB
+
+(defn map_xyz_channel
+  "Take a single colour channel and map
+  it to a value so that it can be composed with
+  other channels to create LAB components."
+  [channel]
+  (if (> channel 0.008856)
+    (math/expt channel 1/3)
+    (+ (* 7.787 channel) (/ 16 116))))
+
+(defn compute_lab_components
+  "Take the mapped XYZ vals and derive the LAB vals."
+  [[x y z]]
+  [(- (* y 116) 16)
+   (* (- x y) 500)
+   (* (- y z) 200)])
+
+
+(defn XYZ_to_LAB
+  "Take a vec of XYZ and return its LAB mapping."
+  [[_x _y _z]]
+  (let [coll [
+               (/ _x 95.0470)
+               (/ _y 100.000)
+               (/ _z 108.883)]] (compute_lab_components (map map_xyz_channel coll) )))
