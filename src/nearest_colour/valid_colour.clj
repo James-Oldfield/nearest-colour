@@ -1,7 +1,8 @@
 (ns nearest-colour.valid_colour)
 
 (defn validate_colour
-  "Return a boolean of whether or not input colour is valid"
+  "Return (identity vec) or empty coll as a function of
+  input colour's validity"
   ([r g b]
     (validate_colour '(r g b)))
   ([c]
