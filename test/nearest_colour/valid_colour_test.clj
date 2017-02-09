@@ -1,4 +1,4 @@
-(ns nearest-colour.convert-test
+(ns nearest-colour.valid_colour-test
   (:require [clojure.test :refer :all]
             [nearest-colour.valid_colour :refer :all]))
 
