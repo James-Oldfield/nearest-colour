@@ -24,7 +24,7 @@
 (defn RGB_to_XYZ
   "Take a vec of RGB and return its XYZ mapping."
   [coll]
-  (compute_xyz_components (map map_rgb_channel coll)))
+  (compute_xyz_components (map map_rgb_channel (valid/validate_colour coll))))
 
 ; XYZ to LAB
 
