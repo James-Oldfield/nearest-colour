@@ -3,6 +3,8 @@
             [nearest-colour.convert :refer :all]))
 
 (deftest test-rgb_to_XYZ
+  (testing "RGB to XYZ mapping"
+    (is (= 79.9102738014409 (map_channel 231))))
   (testing "RGB -> XYZ conversion"
-    (is (= [0 0 0] (rgb_to_XYZ [0 0 0])))
-    (is (= [46.83917101461927 30.63861271941505 9.406382243260119] (rgb_to_XYZ [255 99 71])))))
+    (is (= [0.0 0.0 0.0] (rgb_to_XYZ [0 0 0])))
+    (is (= [46.83917101461927 30.638612719415054 9.406382243260119] (rgb_to_XYZ [255 99 71])))))
