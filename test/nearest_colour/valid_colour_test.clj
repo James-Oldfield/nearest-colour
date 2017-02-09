@@ -2,11 +2,11 @@
   (:require [clojure.test :refer :all]
             [nearest-colour.valid_colour :refer :all]))
 
-(deftest test-is_colour_valid?
+(deftest test-validate_colour
   (testing "Is the colour input vec valid?"
-    (is (= true (is_colour_valid? [0 255 100])))
-    (is (= false (is_colour_valid? 2 24 0)))
-    (is (= false (is_colour_valid? "2 24 0")))
-    (is (= false (is_colour_valid? "bob")))
-    (is (= false (is_colour_valid? [0 255 -100])))
-    (is (= false (is_colour_valid? [0])))))
+    (is (= [0 255 100] (validate_colour [0 255 100])))
+    (is (= [] (validate_colour 2 24 0)))
+    (is (= [] (validate_colour "2 24 0")))
+    (is (= [] (validate_colour "bob")))
+    (is (= [] (validate_colour [0 255 -100])))
+    (is (= [] (validate_colour [0])))))
