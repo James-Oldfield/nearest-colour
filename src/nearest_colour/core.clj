@@ -3,6 +3,7 @@
   (:gen-class))
 
 (defn compute_3d_dist
+  "Computes the euclidean distance of two points in 3d space"
   [[x1 y1 z1]
    [x2 y2 z2]]
   (math/sqrt (+ (math/expt (- x1 x2) 2)
