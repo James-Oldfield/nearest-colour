@@ -1,4 +1,5 @@
 (ns nearest-colour.convert
+  (:require [nearest-colour.valid_colour :as valid])
   (:require [clojure.math.numeric-tower :as math]))
 
 ; RGB to XYZ
@@ -52,4 +53,5 @@
                (/ _y 100.000)
                (/ _z 108.883)]] (compute_lab_components (map map_xyz_channel coll) )))
 
-(defn RGB_to_LAB [coll] ((comp XYZ_to_LAB RGB_to_XYZ) coll))
+(defn RGB_to_LAB [coll]
+  ((comp XYZ_to_LAB RGB_to_XYZ) coll))
