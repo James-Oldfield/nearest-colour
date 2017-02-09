@@ -21,8 +21,16 @@
 
 (def colour [255 99 71])
 
+(defn colour_dist
+  "Partial applicaton of compute function with the 'input' colour"
+  [c]
+  ((partial compute_3d_dist (convert/RGB_to_LAB colour)) c))
+
 (defn -main
   "Find most perceptually-similar colour in a palette to an input colour"
   [& args]
-    (map (partial compute_3d_dist (convert/RGB_to_LAB colour))
-         (map convert/RGB_to_LAB palette)))
+  (reduce
+    (fn [p c]
+      (if (< (colour_dist c) (colour_dist p))
+        c
+        p)) [1000 1000 1000] (map convert/RGB_to_LAB palette)))
