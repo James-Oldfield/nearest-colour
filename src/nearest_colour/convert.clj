@@ -20,7 +20,7 @@
    (+ (* r 0.2126) (* g 0.7152) (* b 0.0722))
    (+ (* r 0.0193) (* g 0.1192) (* b 0.9505))])
 
-(defn rgb_to_XYZ
+(defn RGB_to_XYZ
   "Take a vec of RGB and return its XYZ mapping."
   [coll]
   (compute_xyz_components (map map_rgb_channel coll)))
@@ -51,3 +51,5 @@
                (/ _x 95.0470)
                (/ _y 100.000)
                (/ _z 108.883)]] (compute_lab_components (map map_xyz_channel coll) )))
+
+(defn RGB_to_LAB [coll] ((comp XYZ_to_LAB RGB_to_XYZ) coll))
